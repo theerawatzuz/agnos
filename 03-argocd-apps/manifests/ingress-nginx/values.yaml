@@ -14,3 +14,5 @@ ingress-nginx:
     #    http: 32080
     config:
       enable-real-ip: "true"
+    admissionWebhooks:
+      enabled: false  # ปิด webhook เพราะไม่มี endpoints
