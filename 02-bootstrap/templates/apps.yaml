@@ -9,9 +9,9 @@ spec:
 
   # Source of the application manifests
   source:
-    repoURL: https://github.com/devops-skill-experts/argocd-demo.git
-    targetRevision: {{ .Values.envAlias }} #Should be based on environment
-    path: '03-argocd-apps/applications'
+    repoURL: https://github.com/theerawatzuz/agnos.git
+    targetRevision: { { .Values.envAlias } } #Should be based on environment
+    path: "03-argocd-apps/applications"
 
   # Destination cluster and namespace to deploy the application
   destination:

@@ -4,19 +4,19 @@ metadata:
   name: argocd
 spec:
   generators:
-  - clusters:
-      selector:
-        matchLabels:
-          custom: "true"
+    - clusters:
+        selector:
+          matchLabels:
+            custom: "true"
   template:
     metadata:
-      name: 'argocd-{{name}}'
+      name: "argocd-{{name}}"
     spec:
       project: "default"
       source:
-        repoURL: https://github.com/devops-skill-experts/argocd-demo.git
+        repoURL: https://github.com/theerawatzuz/agnos.git
         targetRevision: "{{name}}" #Based on environment
-        path: '03-argocd-apps/manifests/argocd'
+        path: "03-argocd-apps/manifests/argocd"
         helm:
           ignoreMissingValueFiles: true
           valueFiles:

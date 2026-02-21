@@ -4,19 +4,19 @@ metadata:
   name: hello
 spec:
   generators:
-  - clusters:
-      selector:
-        matchLabels:
-          custom: "true"
+    - clusters:
+        selector:
+          matchLabels:
+            custom: "true"
   template:
     metadata:
-      name: 'hello-{{name}}'
+      name: "hello-{{name}}"
     spec:
       project: "default"
       source:
-        repoURL: https://github.com/devops-skill-experts/argocd-demo.git
+        repoURL: https://github.com/theerawatzuz/agnos.git
         targetRevision: "{{name}}" #Based on environment
-        path: '03-argocd-apps/manifests/hello'
+        path: "03-argocd-apps/manifests/hello"
       destination:
         name: in-cluster
         namespace: hello
