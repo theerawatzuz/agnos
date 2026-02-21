@@ -1,0 +1,7 @@
+# Helm templates - Prettier breaks {{ }} syntax
+**/templates/**/*.yaml
+**/templates/**/*.yml
+
+# Helm charts
+**/Chart.yaml
+**/values*.yaml

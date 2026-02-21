@@ -1,0 +1,11 @@
+{
+  "overrides": [
+    {
+      "files": ["**/templates/**/*.yaml", "**/templates/**/*.yml"],
+      "options": {
+        "parser": "yaml",
+        "printWidth": 1000
+      }
+    }
+  ]
+}
