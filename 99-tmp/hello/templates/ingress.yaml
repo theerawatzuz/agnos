@@ -5,13 +5,13 @@ metadata:
 spec:
   ingressClassName: nginx
   rules:
-  - host: "hello.chalam-kitchen.com"
-    http:
-      paths:
-      - pathType: ImplementationSpecific
-        path: "/"
-        backend:
-          service:
-            name: hello-service
-            port:
-              number: 80
+    - host: "hello.thebrainsurf.site"
+      http:
+        paths:
+          - pathType: ImplementationSpecific
+            path: "/"
+            backend:
+              service:
+                name: hello-service
+                port:
+                  number: 80
