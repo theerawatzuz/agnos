@@ -1,9 +1,10 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: hello-deployment
+  name: hello-{{ .Values.environment }}
   labels:
     app: hello
+    environment: {{ .Values.environment }}
 spec:
   replicas: 1
   selector:

@@ -17,6 +17,10 @@ spec:
         repoURL: https://github.com/theerawatzuz/agnos.git
         targetRevision: "{{name}}" #Based on environment
         path: "03-argocd-apps/manifests/hello"
+        helm:
+          parameters:
+            - name: environment
+              value: "{{name}}"
       destination:
         name: in-cluster
         namespace: hello
