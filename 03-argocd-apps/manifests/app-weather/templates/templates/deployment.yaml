@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
       - name: weather-app
-        image: bankt21/weather-ingest:v5
+        image: bankt21/weather-ingest:v10
         ports:
         - containerPort: 3001
         envFrom:
