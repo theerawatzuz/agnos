@@ -3,7 +3,7 @@ kind: Service
 metadata:
   name: weather-service
 spec:
-  type: NodePort
+  type: ClusterIP
   selector:
     app: weather-app
   ports:
@@ -11,4 +11,3 @@ spec:
     protocol: TCP
     port: 3001
     targetPort: 3001
-    nodePort: 30001
