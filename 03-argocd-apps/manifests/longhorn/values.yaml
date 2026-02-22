@@ -8,5 +8,8 @@ longhorn:
     defaultClassReplicaCount: 2
     defaultClass: true
 
+  preUpgradeChecker:
+    jobEnabled: true
+
   ingress:
     enabled: false 
