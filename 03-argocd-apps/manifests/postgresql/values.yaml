@@ -1,0 +1,10 @@
+# PostgreSQL simple configuration
+image:
+  repository: postgres
+  tag: "16-alpine"
+
+storage:
+  size: 5Gi
+  storageClass: local-path
+
+replicas: 2

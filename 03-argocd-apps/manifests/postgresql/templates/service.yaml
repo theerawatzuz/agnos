@@ -1,0 +1,48 @@
+---
+# Headless service for StatefulSet
+apiVersion: v1
+kind: Service
+metadata:
+  name: postgresql
+spec:
+  clusterIP: None
+  selector:
+    app: postgresql
+  ports:
+    - port: 5432
+      targetPort: 5432
+      name: postgresql
+
+---
+# NodePort for postgresql-0 (read-write)
+apiVersion: v1
+kind: Service
+metadata:
+  name: postgresql-0-nodeport
+spec:
+  type: NodePort
+  selector:
+    app: postgresql
+    statefulset.kubernetes.io/pod-name: postgresql-0
+  ports:
+    - port: 5432
+      targetPort: 5432
+      nodePort: 30432
+      name: postgresql
+
+---
+# NodePort for postgresql-1 (read-only)
+apiVersion: v1
+kind: Service
+metadata:
+  name: postgresql-1-nodeport
+spec:
+  type: NodePort
+  selector:
+    app: postgresql
+    statefulset.kubernetes.io/pod-name: postgresql-1
+  ports:
+    - port: 5432
+      targetPort: 5432
+      nodePort: 30433
+      name: postgresql
