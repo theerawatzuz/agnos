@@ -4,26 +4,30 @@ metadata:
   name: weather
 spec:
   generators:
-    - clusters:
-        selector:
-          matchLabels:
-            custom: "true"
+    - list:
+        elements:
+          - env: dev
+            namespace: weather-dev
+          - env: uat
+            namespace: weather-uat
+          - env: production
+            namespace: weather-production
   template:
     metadata:
-      name: "weather-{{name}}"
+      name: "weather-{{env}}"
     spec:
       project: "default"
       source:
         repoURL: https://github.com/theerawatzuz/agnos.git
-        targetRevision: "{{name}}" #Based on environment
+        targetRevision: "{{env}}" #Based on environment branch
         path: "03-argocd-apps/manifests/app-weather"
         helm:
           valueFiles:
             - values.yaml
-            - values-{{name}}.yaml
+            - values-{{env}}.yaml
       destination:
         name: in-cluster
-        namespace: weather
+        namespace: "{{namespace}}"
       syncPolicy:
         automated:
           selfHeal: true
