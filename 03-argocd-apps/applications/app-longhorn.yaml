@@ -1,0 +1,24 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: longhorn-production
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/theerawatzuz/agnos.git
+    targetRevision: production
+    path: 03-argocd-apps/manifests/longhorn
+    helm:
+      valueFiles:
+        - values.yaml
+        - values-production.yaml
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: longhorn-system
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true

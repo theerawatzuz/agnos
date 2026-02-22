@@ -5,6 +5,6 @@ image:
 
 storage:
   size: 5Gi
-  storageClass: local-path
+  storageClass: longhorn
 
 replicas: 2
