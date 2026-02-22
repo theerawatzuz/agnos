@@ -7,8 +7,8 @@ metadata:
     environment: {{ .Values.environment }}
 data:
   APP_ENV: {{ .Values.environment }}
-  LOG_LEVEL: "info"
-  WEATHER_API_URL: "https://api.weatherapi.com/v1/current.json"
-  WEATHER_LOCATION: "osaka"
-  WEATHER_Q: "34.6937,135.5023"
-  PORT: "3001"
+  LOG_LEVEL: {{ .Values.logLevel | default "info" | quote }}
+  WEATHER_API_URL: {{ .Values.weatherApiUrl | quote }}
+  WEATHER_LOCATION: {{ .Values.weatherLocation | quote }}
+  WEATHER_Q: {{ .Values.weatherQ | quote }}
+  PORT: {{ .Values.port | default "3001" | quote }}

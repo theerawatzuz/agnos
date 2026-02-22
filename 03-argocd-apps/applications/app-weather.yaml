@@ -18,9 +18,9 @@ spec:
         targetRevision: "{{name}}" #Based on environment
         path: "03-argocd-apps/manifests/app-weather"
         helm:
-          parameters:
-            - name: environment
-              value: "{{name}}"
+          valueFiles:
+            - values.yaml
+            - values-{{name}}.yaml
       destination:
         name: in-cluster
         namespace: weather
