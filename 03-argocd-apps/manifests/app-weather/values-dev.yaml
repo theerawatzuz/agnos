@@ -1,5 +1,5 @@
 # Development environment overrides
-environment: development
+environment: dev
 domain: weather-dev.thebrainsurf.site
 replicas: 1
 imageTag: v11
