@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: weather-{{ .Values.environment }}-config
+  labels:
+    app: weather
+    environment: {{ .Values.environment }}
+data:
+  APP_ENV: {{ .Values.environment }}
+  LOG_LEVEL: "info"
+  WEATHER_API_URL: "https://api.weatherapi.com/v1/current.json"
+  WEATHER_LOCATION: "osaka"
+  WEATHER_Q: "34.6937,135.5023"
+  PORT: "3001"

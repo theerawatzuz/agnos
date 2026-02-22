@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: weather-{{ .Values.environment }}
+  labels:
+    app: weather
+    environment: {{ .Values.environment }}
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: weather-app
+  template:
+    metadata:
+      labels:
+        app: weather-app
+    spec:
+      containers:
+      - name: weather-app
+        image: bankt21/weather-ingest:v5
+        ports:
+        - containerPort: 3001
+        envFrom:
+          - configMapRef:
+              name: weather-{{ .Values.environment }}-config
+          - secretRef:
+              name: weather-{{ .Values.environment }}-secret
