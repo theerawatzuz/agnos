@@ -1,0 +1,14 @@
+kube-prometheus-stack:
+  prometheus:
+    prometheusSpec:
+      retention: 7d
+      storageSpec: {} 
+  
+  grafana:
+    enabled: true
+    adminPassword: admin
+    persistence:
+      enabled: false  
+    
+  alertmanager:
+    enabled: false
