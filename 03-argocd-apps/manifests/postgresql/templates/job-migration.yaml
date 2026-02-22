@@ -1,0 +1,49 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: postgresql-migration
+  annotations:
+    argocd.argoproj.io/hook: PostSync
+    argocd.argoproj.io/hook-delete-policy: BeforeHookCreation
+spec:
+  template:
+    spec:
+      restartPolicy: OnFailure
+      containers:
+        - name: migration
+          image: postgres:16-alpine
+          command:
+            - /bin/sh
+            - -c
+            - |
+              set -e
+              echo "Waiting for PostgreSQL..."
+              until pg_isready -h postgresql-0.postgresql.postgresql.svc.cluster.local -U $POSTGRES_USER; do
+                sleep 2
+              done
+              
+              echo "Creating database weather-production..."
+              psql -h postgresql-0.postgresql.postgresql.svc.cluster.local -U $POSTGRES_USER -d postgres -f /migration/001_init.sql || true
+              
+              echo "Creating tables in weather-production..."
+              psql -h postgresql-0.postgresql.postgresql.svc.cluster.local -U $POSTGRES_USER -d weather-production -f /migration/002_create_tables.sql
+              
+              echo "Migration completed successfully"
+          env:
+            - name: POSTGRES_USER
+              valueFrom:
+                secretKeyRef:
+                  name: postgresql-secret
+                  key: username
+            - name: PGPASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: postgresql-secret
+                  key: password
+          volumeMounts:
+            - name: migration
+              mountPath: /migration
+      volumes:
+        - name: migration
+          configMap:
+            name: postgresql-migration
