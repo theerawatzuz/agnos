@@ -1,0 +1,32 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: weather
+spec:
+  generators:
+    - clusters:
+        selector:
+          matchLabels:
+            custom: "true"
+  template:
+    metadata:
+      name: "weather-{{name}}"
+    spec:
+      project: "default"
+      source:
+        repoURL: https://github.com/theerawatzuz/agnos.git
+        targetRevision: "{{name}}" #Based on environment
+        path: "03-argocd-apps/manifests/app-weather"
+        helm:
+          parameters:
+            - name: environment
+              value: "{{name}}"
+      destination:
+        name: in-cluster
+        namespace: weather
+      syncPolicy:
+        automated:
+          selfHeal: true
+          prune: true
+        syncOptions:
+          - CreateNamespace=true
