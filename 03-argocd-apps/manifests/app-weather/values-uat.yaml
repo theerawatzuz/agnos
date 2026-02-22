@@ -1,11 +1,9 @@
+# UAT environment overrides
 environment: uat
 domain: weather-uat.thebrainsurf.site
 replicas: 1
-imageTag: v11
 
-# Weather API Config
-weatherApiUrl: "https://api.weatherapi.com/v1/current.json"
+# UAT-specific configuration
 weatherLocation: "bangkok"
 weatherQ: "13.7563,100.5018"
 logLevel: "info"
-port: "3001"

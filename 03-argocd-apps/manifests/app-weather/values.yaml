@@ -1,0 +1,17 @@
+# Base values - shared across all environments
+# These values are common and don't change per environment
+
+# Image configuration
+imageTag: v11
+
+# Weather API base configuration
+weatherApiUrl: "https://api.weatherapi.com/v1/current.json"
+port: "3001"
+
+# Default values (will be overridden by environment-specific files)
+environment: development
+domain: weather-dev.thebrainsurf.site
+replicas: 1
+weatherLocation: "tokyo"
+weatherQ: "35.6762,139.6503"
+logLevel: "info"

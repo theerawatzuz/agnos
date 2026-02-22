@@ -1,11 +1,9 @@
+# Development environment overrides
 environment: development
 domain: weather-dev.thebrainsurf.site
 replicas: 1
-imageTag: v11
 
-# Weather API Config
-weatherApiUrl: "https://api.weatherapi.com/v1/current.json"
+# Dev-specific configuration
 weatherLocation: "tokyo"
 weatherQ: "35.6762,139.6503"
 logLevel: "debug"
-port: "3001"

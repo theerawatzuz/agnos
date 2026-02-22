@@ -1,11 +1,9 @@
+# Production environment overrides
 environment: production
 domain: weather.thebrainsurf.site
 replicas: 2
-imageTag: v11
 
-# Weather API Config
-weatherApiUrl: "https://api.weatherapi.com/v1/current.json"
+# Production-specific configuration
 weatherLocation: "osaka"
 weatherQ: "34.6937,135.5023"
 logLevel: "info"
-port: "3001"
