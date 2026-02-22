@@ -19,7 +19,7 @@ spec:
       project: "default"
       source:
         repoURL: https://github.com/theerawatzuz/agnos.git
-        targetRevision: "{{env}}" #Based on environment branch
+        targetRevision: production # ใช้ production branch เดียว
         path: "03-argocd-apps/manifests/app-weather"
         helm:
           valueFiles:
