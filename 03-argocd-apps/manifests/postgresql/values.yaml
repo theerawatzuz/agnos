@@ -1,0 +1,9 @@
+image:
+  repository: postgres
+  tag: "16-alpine"
+
+storage:
+  size: 10Gi
+  storageClass: longhorn
+
+replicas: 2

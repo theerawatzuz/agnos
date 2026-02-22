@@ -2,13 +2,22 @@ kube-prometheus-stack:
   prometheus:
     prometheusSpec:
       retention: 7d
-      storageSpec: {} 
+      storageSpec:
+        volumeClaimTemplate:
+          spec:
+            storageClassName: longhorn
+            accessModes: ["ReadWriteOnce"]
+            resources:
+              requests:
+                storage: 20Gi
   
   grafana:
     enabled: true
     adminPassword: admin
     persistence:
-      enabled: false  
+      enabled: true
+      storageClassName: longhorn
+      size: 5Gi
     
   alertmanager:
     enabled: false
