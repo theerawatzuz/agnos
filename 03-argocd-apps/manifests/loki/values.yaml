@@ -24,6 +24,9 @@ loki:
       storageClass: longhorn
       size: 10Gi
   
+  gateway:
+    enabled: false
+  
   chunksCache:
     enabled: false
   
