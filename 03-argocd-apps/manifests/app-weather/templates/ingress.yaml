@@ -1,7 +1,18 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: ingress-weather
+  name: ingress-weather-{{ .Values.environment }}
+  annotations:
+    nginx.ingress.kubernetes.io/proxy-body-size: "0"
+    nginx.ingress.kubernetes.io/proxy-read-timeout: "3600"
+    nginx.ingress.kubernetes.io/proxy-send-timeout: "3600"
+    nginx.ingress.kubernetes.io/proxy-connect-timeout: "3600"
+    nginx.ingress.kubernetes.io/limit-rps: "0"
+    nginx.ingress.kubernetes.io/limit-connections: "0"
+    nginx.ingress.kubernetes.io/proxy-buffering: "off"
+    nginx.ingress.kubernetes.io/upstream-keepalive-connections: "1000"
+    nginx.ingress.kubernetes.io/upstream-keepalive-requests: "10000"
+    nginx.ingress.kubernetes.io/upstream-keepalive-timeout: "3600"
 spec:
   ingressClassName: nginx
   rules:
@@ -12,6 +23,6 @@ spec:
             path: "/"
             backend:
               service:
-                name: weather-service
+                name: weather-{{ .Values.environment }}-service
                 port:
                   number: 3001

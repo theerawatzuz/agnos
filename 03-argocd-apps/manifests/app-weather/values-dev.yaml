@@ -8,3 +8,11 @@ imageTag: v27
 weatherLocation: "tokyo"
 weatherQ: "35.6762,139.6503"
 logLevel: "debug"
+
+# Autoscaling for load testing
+autoscaling:
+  enabled: true
+  minReplicas: 1
+  maxReplicas: 50
+  targetCPUUtilizationPercentage: 50
+  targetMemoryUtilizationPercentage: 70

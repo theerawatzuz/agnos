@@ -18,9 +18,10 @@ resources:
     cpu: 200m
     memory: 256Mi
 
-# Autoscaling (uat: disabled)
+# Autoscaling (uat: enabled for load testing)
 autoscaling:
+  enabled: true
   minReplicas: 1
-  maxReplicas: 1
+  maxReplicas: 50
   targetCPUUtilizationPercentage: 50
-  targetMemoryUtilizationPercentage: 50
+  targetMemoryUtilizationPercentage: 70

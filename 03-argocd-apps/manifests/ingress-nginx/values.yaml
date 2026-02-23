@@ -14,3 +14,37 @@ ingress-nginx:
     #    http: 32080
     config:
       enable-real-ip: "true"
+      # Remove all rate limiting and connection limits
+      limit-rate: "0"
+      limit-rate-after: "0"
+      proxy-body-size: "0"
+      proxy-buffer-size: "16k"
+      proxy-buffers-number: "8"
+      client-body-buffer-size: "16k"
+      # Increase timeouts for load testing
+      proxy-connect-timeout: "3600"
+      proxy-send-timeout: "3600"
+      proxy-read-timeout: "3600"
+      # Increase worker connections
+      max-worker-connections: "65536"
+      max-worker-open-files: "131072"
+      # Keepalive settings for high performance
+      upstream-keepalive-connections: "1000"
+      upstream-keepalive-requests: "10000"
+      upstream-keepalive-timeout: "3600"
+      keep-alive: "3600"
+      keep-alive-requests: "10000"
+      # Disable rate limiting globally
+      limit-req-status-code: "200"
+      limit-conn-status-code: "200"
+    
+    resources:
+      requests:
+        cpu: 500m
+        memory: 512Mi
+      limits:
+        cpu: 2000m
+        memory: 2Gi
+    
+    # Increase replicas for load testing (if not using DaemonSet)
+    replicaCount: 3
