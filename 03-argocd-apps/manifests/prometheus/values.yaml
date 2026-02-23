@@ -24,6 +24,11 @@ kube-prometheus-stack:
         url: http://loki-production:3100
         access: proxy
         isDefault: false
+      - name: Tempo
+        type: tempo
+        url: http://tempo-production:3100
+        access: proxy
+        isDefault: false
     
   alertmanager:
     enabled: false

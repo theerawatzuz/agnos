@@ -1,0 +1,4 @@
+# Production overrides
+tempo:
+  persistence:
+    size: 20Gi
