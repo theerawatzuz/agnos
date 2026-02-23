@@ -1,0 +1,5 @@
+# Production overrides
+loki:
+  singleBinary:
+    persistence:
+      size: 20Gi
