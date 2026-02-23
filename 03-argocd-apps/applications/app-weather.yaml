@@ -37,6 +37,7 @@ spec:
           prune: true
         syncOptions:
           - CreateNamespace=true
+          - Replace=true
       ignoreDifferences:
         - group: autoscaling
           kind: HorizontalPodAutoscaler
