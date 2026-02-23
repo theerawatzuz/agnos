@@ -46,5 +46,5 @@ ingress-nginx:
         cpu: 2000m
         memory: 2Gi
     
-    # Increase replicas for load testing (if not using DaemonSet)
+    # Trigger Increase replicas for load testing (if not using DaemonSet)
     replicaCount: 3
