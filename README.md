@@ -129,30 +129,30 @@ kubectl get ingress -n weather-production
 
 **Production URLs:**
 
-- Weather App: https://weather.thebrainsurf.site
-- ArgoCD: https://argocd.thebrainsurf.site
-- Grafana: https://grafana.thebrainsurf.site
-- Prometheus: https://prometheus.thebrainsurf.site
-- Longhorn: https://longhorn.thebrainsurf.site
+- Weather App: http://weather.thebrainsurf.site
+- ArgoCD: http://argocd.thebrainsurf.site
+- Grafana: http://grafana.thebrainsurf.site
+- Prometheus: http://prometheus.thebrainsurf.site
+- Longhorn: http://longhorn.thebrainsurf.site
 
 **Dev URLs:**
 
-- Weather App: https://weather-dev.thebrainsurf.site
+- Weather App: http://weather-dev.thebrainsurf.site
 
 ### Weather App Endpoints
 
 ```bash
 # Health check
-curl https://weather.thebrainsurf.site/health
+curl http://weather.thebrainsurf.site/health
 
 # Liveness probe
-curl https://weather.thebrainsurf.site/live
+curl http://weather.thebrainsurf.site/live
 
 # Metrics (Prometheus format)
-curl https://weather.thebrainsurf.site/metrics
+curl http://weather.thebrainsurf.site/metrics
 
 # Get weather data
-curl https://weather.thebrainsurf.site/weather
+curl http://weather.thebrainsurf.site/weather
 ```
 
 ### Monitoring
