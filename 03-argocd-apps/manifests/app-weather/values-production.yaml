@@ -20,7 +20,8 @@ resources:
 
 # Autoscaling (production: enabled, easy to test)
 autoscaling:
+  enabled: true
   minReplicas: 2
   maxReplicas: 5
-  targetCPUUtilizationPercentage: 50
+  targetCPUUtilizationPercentage: 30
   targetMemoryUtilizationPercentage: 50

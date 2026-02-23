@@ -27,7 +27,8 @@ resources:
 
 # Autoscaling (dev: disabled)
 autoscaling:
+  enabled: false
   minReplicas: 1
   maxReplicas: 1
-  targetCPUUtilizationPercentage: 50
-  targetMemoryUtilizationPercentage: 50
+  targetCPUUtilizationPercentage: 80
+  targetMemoryUtilizationPercentage: 80

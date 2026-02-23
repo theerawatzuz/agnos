@@ -6,14 +6,15 @@ metadata:
     app: weather
     environment: {{ .Values.environment }}
 spec:
-  replicas: {{ .Values.replicas }}
   selector:
     matchLabels:
       app: weather-app
+      environment: {{ .Values.environment }}
   template:
     metadata:
       labels:
         app: weather-app
+        environment: {{ .Values.environment }}
     spec:
       containers:
       - name: weather-app
