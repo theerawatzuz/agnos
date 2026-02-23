@@ -2,6 +2,9 @@ apiVersion: v1
 kind: Service
 metadata:
   name: weather-service
+  labels:
+    app: weather-app
+    environment: {{ .Values.environment }}
 spec:
   type: ClusterIP
   selector:

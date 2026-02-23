@@ -1,0 +1,16 @@
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: weather-{{ .Values.environment }}
+  labels:
+    app: weather
+    environment: {{ .Values.environment }}
+spec:
+  selector:
+    matchLabels:
+      app: weather-app
+      environment: {{ .Values.environment }}
+  endpoints:
+  - port: http
+    path: /metrics
+    interval: 30s
