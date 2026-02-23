@@ -16,4 +16,7 @@ data:
   POSTGRES_HOST: "postgresql-0.postgresql.postgresql.svc.cluster.local"
   POSTGRES_PORT: "5432"
   POSTGRES_DB: "weather-{{ .Values.environment }}"
+  
+  # Tempo tracing
+  TEMPO_URL: "http://tempo-production:4318/v1/traces"
 
