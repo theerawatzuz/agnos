@@ -1,4 +1,15 @@
 promtail:
+  # Disable readiness probe (it fails when no logs found)
+  readinessProbe:
+    httpGet:
+      path: /ready
+      port: http-metrics
+    initialDelaySeconds: 10
+    periodSeconds: 10
+    timeoutSeconds: 1
+    successThreshold: 1
+    failureThreshold: 5
+  
   config:
     clients:
       - url: http://loki-production-loki:3100/loki/api/v1/push
@@ -17,5 +28,28 @@ promtail:
               target_label: pod
             - source_labels: [__meta_kubernetes_pod_container_name]
               target_label: container
+            - replacement: /var/log/pods/*$1/*.log
+              separator: /
+              source_labels:
+                - __meta_kubernetes_pod_uid
+                - __meta_kubernetes_pod_container_name
+              target_label: __path__
           pipeline_stages:
-            - docker: {}
+            - cri: {}
+  
+  # Mount host paths
+  extraVolumes:
+    - name: pods
+      hostPath:
+        path: /var/log/pods
+    - name: containers
+      hostPath:
+        path: /var/lib/docker/containers
+  
+  extraVolumeMounts:
+    - name: pods
+      mountPath: /var/log/pods
+      readOnly: true
+    - name: containers
+      mountPath: /var/lib/docker/containers
+      readOnly: true

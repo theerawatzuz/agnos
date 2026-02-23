@@ -27,6 +27,13 @@ loki:
   gateway:
     enabled: false
   
+  # Disable sidecar (not needed for SingleBinary)
+  sidecar:
+    rules:
+      enabled: false
+    datasources:
+      enabled: false
+  
   chunksCache:
     enabled: false
   
