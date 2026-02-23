@@ -6,46 +6,7 @@ Production-ready Kubernetes infrastructure for weather application using ArgoCD,
 
 ### Infrastructure Components
 
-```
-┌─────────────────────────────────────────────────────────────┐
-│                     GitOps with ArgoCD                      │
-├─────────────────────────────────────────────────────────────┤
-│                                                             │
-│  ┌──────────────┐    ┌──────────────┐    ┌──────────────┐ │
-│  │   Dev Env    │    │   UAT Env    │    │  Prod Env    │ │
-│  │              │    │              │    │              │ │
-│  │ 1 Pod        │    │ 1-3 Pods     │    │ 2-5 Pods     │ │
-│  │ No HPA       │    │ HPA Enabled  │    │ HPA Enabled  │ │
-│  └──────────────┘    └──────────────┘    └──────────────┘ │
-│                                                             │
-└─────────────────────────────────────────────────────────────┘
-                              │
-                              ▼
-┌─────────────────────────────────────────────────────────────┐
-│                    Ingress (NGINX)                          │
-│  • SSL/TLS Termination                                      │
-│  • Load Balancing                                           │
-│  • Rate Limiting (configurable)                             │
-└─────────────────────────────────────────────────────────────┘
-                              │
-                              ▼
-┌─────────────────────────────────────────────────────────────┐
-│                  Weather Application                        │
-│  • Node.js Express API                                      │
-│  • Health checks (/health, /live)                           │
-│  • Metrics endpoint (/metrics)                              │
-│  • PostgreSQL integration                                   │
-└─────────────────────────────────────────────────────────────┘
-                              │
-                              ▼
-┌─────────────────────────────────────────────────────────────┐
-│                   Observability Stack                       │
-│  • Prometheus (metrics collection)                          │
-│  • Grafana (visualization)                                  │
-│  • Loki (log aggregation)                                   │
-│  • Tempo (distributed tracing)                              │
-└─────────────────────────────────────────────────────────────┘
-```
+![AGNOS Cluster Overview Flow](docs/AGNOS-DEMO.svg)
 
 ### Key Features
 
@@ -410,25 +371,8 @@ kubectl get hpa -n weather-production -w
 
 **High Availability Architecture:**
 
-```
-┌─────────────────────────────────────────────────────────────┐
-│                    Rancher Management                       │
-│              (Multi-zone, Multi-cloud capable)              │
-└─────────────────────────────────────────────────────────────┘
-                              │
-        ┌─────────────────────┼─────────────────────┐
-        │                     │                     │
-   ┌────▼────┐           ┌────▼────┐           ┌────▼────┐
-   │ Zone A  │           │ Zone B  │           │ Zone C  │
-   │         │           │         │           │         │
-   │ Master1 │◄─────────►│ Master2 │◄─────────►│ Master3 │
-   │ Worker1 │           │ Worker2 │           │ Worker3 │
-   │ Worker2 │           │ Worker3 │           │ Worker4 │
-   └─────────┘           └─────────┘           └─────────┘
-
-   If Zone A fails → Zone B/C masters continue
-   If Worker fails → Pods move to other workers
-```
+![AGNOS Cluster Infra](docs/AGNOS-ARCHITECTURE.svg)
+![AGNOS Cluster Rancher](docs/AGNOS-CLUSTER.svg)
 
 **Prevention:**
 
