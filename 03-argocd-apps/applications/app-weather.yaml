@@ -8,10 +8,13 @@ spec:
         elements:
           - env: dev
             namespace: weather-dev
+            branch: dev
           - env: uat
             namespace: weather-uat
+            branch: uat
           - env: production
             namespace: weather-production
+            branch: production
   template:
     metadata:
       name: "weather-{{env}}"
