@@ -9,6 +9,7 @@ spec:
   type: ClusterIP
   selector:
     app: weather-app
+    environment: {{ .Values.environment }}
   ports:
   - name: http
     protocol: TCP
