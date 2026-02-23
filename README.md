@@ -505,7 +505,3 @@ env | grep DATABASE
 3. Push to dev branch → deploys to dev environment
 4. Create PR to `uat` → deploys to UAT
 5. After testing, merge to `production`
-
-## License
-
-MIT
