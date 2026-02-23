@@ -2,7 +2,7 @@
 environment: uat
 domain: weather-uat.thebrainsurf.site
 replicas: 1
-imageTag: v17
+imageTag: v20
 
 # UAT-specific configuration
 weatherLocation: "bangkok"
