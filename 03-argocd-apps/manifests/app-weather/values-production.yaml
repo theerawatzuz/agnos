@@ -2,7 +2,7 @@
 environment: production
 domain: weather.thebrainsurf.site
 replicas: 2
-imageTag: v15
+imageTag: v18
 
 # Production-specific configuration
 weatherLocation: "osaka"
