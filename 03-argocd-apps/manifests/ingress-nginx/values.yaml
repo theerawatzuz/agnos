@@ -34,9 +34,9 @@ ingress-nginx:
       upstream-keepalive-timeout: "3600"
       keep-alive: "3600"
       keep-alive-requests: "10000"
-      # Disable rate limiting globally
-      limit-req-status-code: "200"
-      limit-conn-status-code: "200"
+      # Disable rate limiting globally (use 503 as default error code)
+      limit-req-status-code: "503"
+      limit-conn-status-code: "503"
     
     resources:
       requests:
