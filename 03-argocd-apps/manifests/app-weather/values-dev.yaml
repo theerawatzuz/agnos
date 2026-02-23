@@ -13,6 +13,6 @@ logLevel: "debug"
 autoscaling:
   enabled: true
   minReplicas: 1
-  maxReplicas: 50
+  maxReplicas: 2
   targetCPUUtilizationPercentage: 50
   targetMemoryUtilizationPercentage: 70
