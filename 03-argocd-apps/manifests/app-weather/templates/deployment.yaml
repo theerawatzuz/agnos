@@ -6,6 +6,9 @@ metadata:
     app: weather-app
     environment: {{ .Values.environment }}
 spec:
+  replicas: {{ .Values.replicas | default 1 }}
+  strategy:
+    type: Recreate
   selector:
     matchLabels:
       app: weather-app
