@@ -8,6 +8,7 @@ metadata:
 data:
   APP_ENV: {{ .Values.environment }}
   LOG_LEVEL: {{ .Values.logLevel | default "info" | quote }}
+  LOG_FORMAT: "json"
   WEATHER_API_URL: {{ .Values.weatherApiUrl | quote }}
   WEATHER_LOCATION: {{ .Values.weatherLocation | quote }}
   WEATHER_Q: {{ .Values.weatherQ | quote }}
