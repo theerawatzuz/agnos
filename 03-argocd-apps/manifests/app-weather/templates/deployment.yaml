@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: weather-{{ .Values.environment }}
   labels:
-    app: weather
+    app: weather-app
     environment: {{ .Values.environment }}
 spec:
   selector:
