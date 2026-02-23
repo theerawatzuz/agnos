@@ -8,3 +8,19 @@ imageTag: v23
 weatherLocation: "bangkok"
 weatherQ: "13.7563,100.5018"
 logLevel: "info"
+
+# Resource limits
+resources:
+  requests:
+    cpu: 50m
+    memory: 64Mi
+  limits:
+    cpu: 200m
+    memory: 256Mi
+
+# Autoscaling (uat: disabled)
+autoscaling:
+  minReplicas: 1
+  maxReplicas: 1
+  targetCPUUtilizationPercentage: 50
+  targetMemoryUtilizationPercentage: 50

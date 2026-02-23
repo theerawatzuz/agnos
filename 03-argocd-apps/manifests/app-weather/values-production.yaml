@@ -8,3 +8,19 @@ imageTag: v23
 weatherLocation: "osaka"
 weatherQ: "34.6937,135.5023"
 logLevel: "info"
+
+# Resource limits
+resources:
+  requests:
+    cpu: 100m
+    memory: 128Mi
+  limits:
+    cpu: 500m
+    memory: 512Mi
+
+# Autoscaling (production: enabled, easy to test)
+autoscaling:
+  minReplicas: 2
+  maxReplicas: 5
+  targetCPUUtilizationPercentage: 50
+  targetMemoryUtilizationPercentage: 50
