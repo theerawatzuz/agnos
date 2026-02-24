@@ -106,14 +106,11 @@ kubectl get ingress -n weather-production
 # Health check
 curl http://weather.thebrainsurf.site/health
 
-# Liveness probe
-curl http://weather.thebrainsurf.site/live
-
 # Metrics (Prometheus format)
 curl http://weather.thebrainsurf.site/metrics
 
 # Get weather data
-curl http://weather.thebrainsurf.site/weather
+curl http://weather.thebrainsurf.site/get-weather
 ```
 
 ### Monitoring
