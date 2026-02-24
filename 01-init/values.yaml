@@ -2,8 +2,6 @@
 argo-cd:
   fullnameOverride: argocd
   dex: {}
-  server:
-    extraArgs:
-      - --insecure
+  server:  
     config:
       url: https://github.com/ssss/xxxx.git

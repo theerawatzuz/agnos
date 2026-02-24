@@ -3,10 +3,13 @@ kind: Ingress
 metadata:
   name: argocd-ing
   annotations:
-    nginx.ingress.kubernetes.io/backend-protocol: HTTP
-    nginx.ingress.kubernetes.io/force-ssl-redirect: "false"
+    nginx.ingress.kubernetes.io/backend-protocol: HTTPS
 spec:
   ingressClassName: nginx
+  tls:
+    - hosts:
+      - {{ .Values.domain }}
+      secretName: argocd-cert
   rules:
     - host: {{ .Values.domain }}
       http:
@@ -17,4 +20,4 @@ spec:
               service:
                 name: argocd-server
                 port:
-                  number: 80
+                  number: 443
