@@ -2,7 +2,7 @@
 environment: dev
 domain: weather-dev.thebrainsurf.site
 replicas: 1
-imageTag: v27
+imageTag: v29
 
 # Dev-specific configuration
 weatherLocation: "tokyo"
